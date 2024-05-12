@@ -13,7 +13,7 @@ from langchain_community.llms import OpenAI
 from langchain_core.prompts import PromptTemplate
 from langchain_openai import ChatOpenAI
 import matplotlib.pyplot as plt
-import seaborn as sn
+# import seaborn as sn
 
 
 OPENAI_API_KEY=st.secrets.OPENAI_API_KEY
