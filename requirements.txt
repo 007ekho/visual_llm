@@ -1,5 +1,5 @@
 streamlit
-matplotlib.pyplot
+
 seaborn
 os
 openai
@@ -11,4 +11,4 @@ langchain
 langchain_community
 langchain_core
 langchain_openai
-
+matplotlib
