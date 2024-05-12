@@ -1,7 +1,7 @@
 streamlit
 
-seaborn
-os
+
+
 openai
 # from pathlib import Path
 pillow
