@@ -1,0 +1,75 @@
+# _type: prompt
+# input_variables:
+#   - input
+# template: |
+#   Given below are the table structures in the bus_journey database raw schema in the Snowflake cloud database:
+#   BUS_JOURNEY (
+#     bus_number DECIMAL(38, 0),
+#     journey_id VARCHAR(16777216),
+#     start_time TIME,
+#     end_time TIME,
+#     card_type VARCHAR(16777216),
+#     weekday VARCHAR(16777216),
+#     revenue DECIMAL(38, 2)
+#   );
+#   Take user questions and respond back with python queries.
+#   Example:
+#   User question: given this details {'WEEKDAY': {0: 'Tuesday', 1: 'Wednesday', 2: 'Monday', 3: 'Saturday', 4: 'Sunday', 5: 'Thursday', 6: 'Friday'}, 'NUM_JOURNEYS': {0: 16, 1: 18, 2: 10, 3: 22, 4: 10, 5: 3, 6: 15}} suggest a matplotlib code to visualize this details.
+
+#   Your generated Python code:
+#   data = {'WEEKDAY': {0: 'Tuesday', 1: 'Wednesday', 2: 'Monday', 3: 'Saturday', 4: 'Sunday', 5: 'Thursday', 6: 'Friday'}, 'NUM_JOURNEYS': {0: 16, 1: 18, 2: 10, 3: 22, 4: 10, 5: 3, 6: 15}}
+
+#   # Extracting weekdays and number of journeys
+#   weekdays = list(data['WEEKDAY'].values())
+#   num_journeys = list(data['NUM_JOURNEYS'].values())
+
+#   # Plotting
+#   plt.bar(weekdays, num_journeys)
+#   plt.xlabel('Weekday')
+#   plt.ylabel('Number of Journeys')
+#   plt.title('Number of Journeys by Weekday')
+#   plt.xticks(rotation=45)  # Rotate x-axis labels for better readability
+#   st.write(plt.show())
+
+#   User question: {input}
+#   Your generated SQL query:
+
+
+_type: prompt
+input_variables:
+  - input
+template: |
+  Given below are the table structures in the bus_journey database raw schema in the Snowflake cloud database:
+  BUS_JOURNEY (
+    bus_number DECIMAL(38, 0),
+    journey_id VARCHAR(16777216),
+    start_time TIME,
+    end_time TIME,
+    card_type VARCHAR(16777216),
+    weekday VARCHAR(16777216),
+    revenue DECIMAL(38, 2)
+  );
+
+  Take user questions and respond back with Python queries.
+
+  Example:
+  User question: "Given this data, {'WEEKDAY': {0: 'Tuesday', 1: 'Wednesday', 2: 'Monday', 3: 'Saturday', 4: 'Sunday', 5: 'Thursday', 6: 'Friday'}, 'NUM_JOURNEYS': {0: 16, 1: 18, 2: 10, 3: 22, 4: 10, 5: 3, 6: 15}}, suggest a Matplotlib code to visualize it."
+
+  Your generated Python code:
+  data = {'WEEKDAY': {0: 'Tuesday', 1: 'Wednesday', 2: 'Monday', 3: 'Saturday', 4: 'Sunday', 5: 'Thursday', 6: 'Friday'}, 'NUM_JOURNEYS': {0: 16, 1: 18, 2: 10, 3: 22, 4: 10, 5: 3, 6: 15}}
+
+  # Extracting weekdays and number of journeys
+  weekdays = list(data['WEEKDAY'].values())
+  num_journeys = list(data['NUM_JOURNEYS'].values())
+
+  # Plotting
+  plt.bar(weekdays, num_journeys)
+  plt.xlabel('Weekday')
+  plt.ylabel('Number of Journeys')
+  plt.title('Number of Journeys by Weekday')
+  plt.xticks(rotation=45)  # Rotate x-axis labels for better readability
+  plt.show()
+
+  User question: {input}
+  Your generated Python code:
+
