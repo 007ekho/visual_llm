@@ -1,0 +1,14 @@
+streamlit
+matplotlib.pyplot
+seaborn
+os
+openai
+# from pathlib import Path
+pillow
+langchain
+# from langchain import OpenAI, LLMChain
+
+langchain_community
+langchain_core
+langchain_openai
+
