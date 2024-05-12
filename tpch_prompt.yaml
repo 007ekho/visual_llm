@@ -1,0 +1,36 @@
+_type: prompt
+input_variables:
+  - input
+template: |
+  Given below are the table structures in the analytics database raw schema in the Snowflake cloud database:
+  BUS_JOURNEY (
+    bus_number DECIMAL(38, 0), 
+    journey_id VARCHAR(16777216), 
+    start_time TIME, 
+    end_time TIME, 
+    card_type VARCHAR(16777216), 
+    weekday VARCHAR(16777216), 
+    revenue DECIMAL(38, 2)
+  );
+  Take user questions and respond back with SQL queries.
+  Example:
+    User question: What is the total number of journeys recorded in the dataset?
+    Your generated SQL query: SELECT COUNT(*) AS total_journeys FROM bus_journey;
+  Example:
+    User question: What is the average duration of a journey?
+    Your generated SQL query: SELECT AVG(duration) AS avg_duration_minutes FROM bus_journey;
+  Example:
+    User question: Which route or bus number has the highest number of journeys?
+    Your generated SQL query: SELECT bus_number, COUNT(*) AS num_journeys FROM bus_journey GROUP BY bus_number ORDER BY num_journeys DESC LIMIT 1;
+  Example:
+    User question: How many journeys were made using each type of card on Mondays?
+    Your generated SQL query: SELECT card_type, COUNT(*) AS num_journeys_on_monday FROM bus_journey WHERE weekday ILIKE 'Monday' GROUP BY card_type;
+  Example:
+    User question: What is the longest journey duration?
+    Your generated SQL query: select MAX(DATEDIFF('minute', start_time, end_time)) as longest_journey_duration_minutes from bus_journey;
+  User question: {input}
+  Your generated SQL query:
+
+    
+   
+
