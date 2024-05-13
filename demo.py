@@ -3,6 +3,7 @@ import openai
 import streamlit as st
 from pathlib import Path
 from PIL import Image
+from langchain import hub
 from sql_execution import execute_sf_query
 # from sql_execution import execute_df_query
 from sql_execution import get_completion
@@ -29,23 +30,24 @@ user_input = st.text_input("enter your question here")
 tab_title = ["result","Query","plot","test"]
 tabs = st.tabs(tab_title)
 
-def load_prompt_from_github(file_url):
-    response = requests.get(file_url)
-    response.raise_for_status()  # Raise an exception for 4xx or 5xx status codes
-    prompt_data = yaml.safe_load(response.text)
-    return prompt_data
+# def load_prompt_from_github(file_url):
+#     response = requests.get(file_url)
+#     response.raise_for_status()  # Raise an exception for 4xx or 5xx status codes
+#     prompt_data = yaml.safe_load(response.text)
+#     return prompt_data
 
-# Example GitHub raw file URL
-github_raw_url = "https://raw.githubusercontent.com/007ekho/visual_llm/main/tpch_prompt.yaml"
+# # Example GitHub raw file URL
+# github_raw_url = "https://raw.githubusercontent.com/007ekho/visual_llm/main/tpch_prompt.yaml"
 
 # Load prompt from GitHub
-template = load_prompt_from_github(github_raw_url)
+# template = load_prompt_from_github(github_raw_url)
 
 #create prompt
-prompt_template = load_prompt("https://github.com/007ekho/visual_llm/blob/main/tpch_prompt.yaml")
+# prompt_template = load_prompt("https://github.com/007ekho/visual_llm/blob/main/tpch_prompt.yaml")
+prompt = hub.pull("ehi-123/bs")
 llm = OpenAI(temperature=0)
 
-sql_generation_chain = LLMChain(llm=llm, prompt=prompt_template, verbose=True)
+sql_generation_chain = LLMChain(llm=llm, prompt=prompt, verbose=True)
 # python_generation_chain = LLMChain(llm=llm, prompt=prompt_template, verbose=True)
 
 if user_input:
