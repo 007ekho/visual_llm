@@ -6,7 +6,7 @@ from PIL import Image
 from sql_execution import execute_sf_query
 # from sql_execution import execute_df_query
 from sql_execution import get_completion
-# from langchain.prompts import load_prompt
+from langchain.prompts import load_prompt
 # from langchain import OpenAI, LLMChain
 
 from langchain.chains import LLMChain
@@ -21,7 +21,7 @@ import yaml
 
 OPENAI_API_KEY=st.secrets.OPENAI_API_KEY
 # root_path = [p for p in Path(__file__).parents if p.parts[-1]=="LLMSQL"][0]
-root_path = Path(__file__).resolve().parent
+# root_path = Path(__file__).resolve().parent
 
 #create front end
 st.title("AI sql assistant")
@@ -39,10 +39,10 @@ def load_prompt_from_github(file_url):
 github_raw_url = "https://raw.githubusercontent.com/007ekho/visual_llm/main/tpch_prompt.yaml"
 
 # Load prompt from GitHub
-prompt_template = load_prompt_from_github(github_raw_url)
+template = load_prompt_from_github(github_raw_url)
 
 #create prompt
-# prompt_template = load_prompt("https://raw.githubusercontent.com/007ekho/visual_llm/main/tpch_prompt.yaml")
+prompt_template = load_prompt(template)
 llm = OpenAI(temperature=0)
 
 sql_generation_chain = LLMChain(llm=llm, prompt=prompt_template, verbose=True)
