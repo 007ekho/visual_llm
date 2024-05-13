@@ -32,7 +32,7 @@ tabs = st.tabs(tab_title)
 #     st.image(erd_image)
 
 #create prompt
-prompt_template = load_prompt("C:/Users/USER/Downloads/llmsql/prompts/tpch_prompt.yaml")
+prompt_template = load_prompt("https://github.com/007ekho/visual_llm/blob/main/tpch_prompt.yaml")
 llm = OpenAI(temperature=0)
 
 sql_generation_chain = LLMChain(llm=llm, prompt=prompt_template, verbose=True)
