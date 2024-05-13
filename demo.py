@@ -1,5 +1,5 @@
 import os
-import openai
+import openai import OpenAI
 import streamlit as st
 from pathlib import Path
 from PIL import Image
