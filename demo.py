@@ -25,7 +25,7 @@ OPENAI_API_KEY=st.secrets.OPENAI_API_KEY
 # root_path = Path(__file__).resolve().parent
 
 #create front end
-st.title("AI sql assistant")
+st.title("CHAT WITH YOUR SNOWFLAKE DATABASE")
 user_input = st.text_input("enter your question here")
 tab_title = ["result","Query","plot","test"]
 tabs = st.tabs(tab_title)
