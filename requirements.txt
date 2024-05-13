@@ -3,6 +3,7 @@ snowflake
 openai
 pillow
 langchain
+langchainhub
 langchain_community
 langchain_core
 langchain_openai
