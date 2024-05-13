@@ -13,6 +13,8 @@ from langchain_community.llms import OpenAI
 from langchain_core.prompts import PromptTemplate
 from langchain_openai import ChatOpenAI
 import matplotlib.pyplot as plt
+import requests
+import yaml
 # import seaborn as sn
 
 
@@ -26,13 +28,20 @@ user_input = st.text_input("enter your question here")
 tab_title = ["result","Query","plot","test"]
 tabs = st.tabs(tab_title)
 
-#upload the image
-# erd_image = Image.open(f'{root_path}/eth-output.jpg')
-# with tabs[2]:
-#     st.image(erd_image)
+def load_prompt_from_github(file_url):
+    response = requests.get(file_url)
+    response.raise_for_status()  # Raise an exception for 4xx or 5xx status codes
+    prompt_data = yaml.safe_load(response.text)
+    return prompt_data
+
+# Example GitHub raw file URL
+github_raw_url = "https://raw.githubusercontent.com/007ekho/visual_llm/main/tpch_prompt.yaml"
+
+# Load prompt from GitHub
+prompt_template = load_prompt_from_github(github_raw_url)
 
 #create prompt
-prompt_template = load_prompt("https://raw.githubusercontent.com/007ekho/visual_llm/main/tpch_prompt.yaml")
+# prompt_template = load_prompt("https://raw.githubusercontent.com/007ekho/visual_llm/main/tpch_prompt.yaml")
 llm = OpenAI(temperature=0)
 
 sql_generation_chain = LLMChain(llm=llm, prompt=prompt_template, verbose=True)
