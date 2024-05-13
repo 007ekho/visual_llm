@@ -74,8 +74,8 @@ if user_input:
 
         # Call the function to get completion
         completion=get_completion(prompt, result, openai)
-        print(completion)
-        st.write(exec(completion))
+        
+        st.display(completion)
         
 
 
