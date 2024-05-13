@@ -11,7 +11,7 @@ from sql_execution import get_completion
 
 from langchain.chains import LLMChain
 from langchain_community.llms import OpenAI
-from langchain_core.prompts import PromptTemplate
+# from langchain_core.prompts import PromptTemplate
 from langchain_openai import ChatOpenAI
 import matplotlib.pyplot as plt
 import requests
@@ -39,13 +39,13 @@ def load_prompt_from_github(file_url):
 github_raw_url = "https://raw.githubusercontent.com/007ekho/visual_llm/main/tpch_prompt.yaml"
 
 # Load prompt from GitHub
-prompt_template1 = load_prompt_from_github(github_raw_url)
+prompt_template = load_prompt_from_github(github_raw_url)
 
 #create prompt
 # prompt_template = load_prompt("https://raw.githubusercontent.com/007ekho/visual_llm/main/tpch_prompt.yaml")
 llm = OpenAI(temperature=0)
 
-sql_generation_chain = LLMChain(llm=llm, prompt=prompt_template1, verbose=True)
+sql_generation_chain = LLMChain(llm=llm, prompt=prompt_template, verbose=True)
 # python_generation_chain = LLMChain(llm=llm, prompt=prompt_template, verbose=True)
 
 if user_input:
