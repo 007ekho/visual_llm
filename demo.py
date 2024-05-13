@@ -6,9 +6,10 @@ from PIL import Image
 from sql_execution import execute_sf_query
 # from sql_execution import execute_df_query
 from sql_execution import get_completion
-from langchain.prompts import load_prompt
-from langchain import OpenAI, LLMChain
-# from langchain.chains import LLMChain
+# from langchain.prompts import load_prompt
+# from langchain import OpenAI, LLMChain
+
+from langchain.chains import LLMChain
 from langchain_community.llms import OpenAI
 from langchain_core.prompts import PromptTemplate
 from langchain_openai import ChatOpenAI
